@@ -1,0 +1,9 @@
+build
+*.egg-info/
+*.bin
+.venv/
+__pycache__/
+*.whl
+external/
+*.so
+.vscode/
