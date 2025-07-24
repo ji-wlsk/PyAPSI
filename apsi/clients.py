@@ -58,9 +58,9 @@ class LabeledClient(_BaseClient):
         labels = self._extract_labeled_result_from_query_response(query_response)
         # Labels are retrieved from a fixed size memory and can thus contain other data
         # in case a specific label does not fill the full maximum label length.
-        # Accordingly, everything after the first '\x00' is cut off.
+        # Accordingly, everything after the first '\x00' is cut off. (item: label.split(b"\x00", 1)[0])
         found_items_with_labels = {
-            item: label.split("\x00", 1)[0]
+            item: label
             for item, label in zip(self.queried_items, labels)
             if label
         }

@@ -288,7 +288,7 @@ public:
         }
     }
 
-    std::vector<std::pair<std::string, std::vector<uint8_t>>> uid_xored_label_table;
+    std::vector<std::pair<std::vector<uint8_t>, std::vector<uint8_t>>> uid_xored_label_table;
 
     // 2) load_csv_uid_db 메서드 추가
     void load_csv_uid_db(

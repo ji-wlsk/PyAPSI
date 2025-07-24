@@ -153,8 +153,8 @@ auto CSVReader::read(istream &stream) const -> pair<DBData, vector<string>>
         auto [has_item, has_label] = process_line(line, orig_item, item, label);
 
         string label_str = has_label ? string(label.begin(), label.end()) : string();
-        APSI_LOG_DEBUG("CSVReader::process_line line='" << line << "' orig_item='" << orig_item
-                                     << "' label='" << label_str << "'");
+        // APSI_LOG_DEBUG("CSVReader::process_line line='" << line << "' orig_item='" << orig_item
+        //                              << "' label='" << label_str << "'");
 
         if (!has_item) {
             APSI_LOG_WARNING("Failed to read item from `" << file_name_ << "`");

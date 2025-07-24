@@ -117,7 +117,7 @@ shared_ptr<SenderDB> try_load_csv_uid_db(
     const string &params_json,
     size_t nonce_byte_count,
     bool compressed,
-    vector<pair<string, vector<uint8_t>>> &out_table)
+    vector<pair<vector<uint8_t>, vector<uint8_t>>> &out_table)
 {
     // 1) PSIParams 로드
     unique_ptr<PSIParams> params;
@@ -176,12 +176,7 @@ shared_ptr<SenderDB> try_load_csv_uid_db(
         db_vec.emplace_back(Item(item_str), Label(uid_raw));
 
         // out_table 키(HEX) 자리만 미리 찍어두기
-        ostringstream oss;
-        oss << hex << uppercase << setfill('0');
-        for (auto byte : uid_raw) {
-            oss << setw(2) << int(byte);
-        }
-        out_table.emplace_back(oss.str(), vector<uint8_t>{});
+        out_table.emplace_back(uid_raw, vector<uint8_t>{});
     }
 
     // 6) SenderDB 초기화

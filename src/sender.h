@@ -27,4 +27,4 @@ std::shared_ptr<apsi::sender::SenderDB> try_load_csv_uid_db(
     const std::string &params_json,
     size_t nonce_byte_count,
     bool compressed,
-    std::vector<std::pair<std::string, std::vector<uint8_t>>> &out_table);
+    std::vector<std::pair<std::vector<uint8_t>, std::vector<uint8_t>>> &out_table);
