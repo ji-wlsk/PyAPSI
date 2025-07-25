@@ -290,7 +290,6 @@ public:
 
     std::vector<std::pair<std::vector<uint8_t>, std::vector<uint8_t>>> uid_xored_label_table;
 
-    // 2) load_csv_uid_db 메서드 추가
     void load_csv_uid_db(
         const std::string &csv_db_file_path,
         const std::string &params_json,
@@ -298,10 +297,8 @@ public:
         bool compressed)
     {
         try {
-            // 기존 masked‐label 테이블 초기화
             uid_xored_label_table.clear();
 
-            // 실제 CSV 로드 및 SenderDB 생성, out_table 에 masked‐label 채우기
             _db = try_load_csv_uid_db(
                 csv_db_file_path,
                 params_json,
@@ -310,15 +307,12 @@ public:
                 uid_xored_label_table
             );
 
-            // nullptr 반환 시에도 오류로 처리
             if (!_db) {
                 throw std::runtime_error("try_load_csv_uid_db returned nullptr");
             }
         }
         catch (const std::exception &e) {
-            // C++ 로그에도 남깁니다.
             APSI_LOG_ERROR("load_csv_uid_db failed: " << e.what());
-            // Python 으로는 원인 메시지를 포함하여 던집니다.
             throw std::runtime_error(
                 std::string("Failed to load UID CSV data: ") + e.what()
             );

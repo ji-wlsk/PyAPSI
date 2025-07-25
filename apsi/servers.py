@@ -31,7 +31,7 @@ class _BaseServer(_Server):
 
         self._load_db(db_file_path)
         self.db_initialized = True
-    
+
     def load_csv_db(self,csv_db_file_path:str, params_json:str,
         nonce_byte_count: int = 16,
         compressed: bool = False
@@ -51,7 +51,6 @@ class _BaseServer(_Server):
         p = Path(csv_db_file_path)
         if not p.exists():
             raise FileNotFoundError(f"DB file does not exist: {p}")
-        # 내부적으로 C++ _load_csv_uid_db 호출
         self._load_csv_uid_db(csv_db_file_path, params_json, nonce_byte_count, compressed)
         self.db_initialized = True
 

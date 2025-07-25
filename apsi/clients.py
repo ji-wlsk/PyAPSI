@@ -66,10 +66,6 @@ class LabeledClient(_BaseClient):
         }
         return found_items_with_labels
 
-    def extract_raw_uids(self, query_response: bytes) -> list[bytes]:
-        """C++ 바인딩이 돌려주는 raw UID bytes 리스트를 그대로 리턴합니다."""
-        return self._extract_labeled_result_from_query_response(query_response)
-
     def get_prf_bytes_all(self) -> list[bytes]:
         """
         build_query() 이후 내부에 저장된 HashedItem(PRF)들을
