@@ -51,7 +51,7 @@ shared_ptr<SenderDB> try_load_csv_db(
 
 shared_ptr<SenderDB> create_sender_db(
     const CSVReader::DBData &db_data,
-    unique_ptr<PSIParams> psi_params 
+    unique_ptr<PSIParams> psi_params,
     size_t nonce_byte_count,
     bool compress)
 {
