@@ -1,0 +1,3 @@
+[submodule "APSI"]
+	path = APSI
+	url = https://github.com/microsoft/APSI
