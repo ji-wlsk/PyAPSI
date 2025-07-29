@@ -68,10 +68,17 @@ class LabeledClient(_BaseClient):
 
     def get_prf_bytes_all(self) -> list[bytes]:
         """
-        build_query() 이후 내부에 저장된 HashedItem(PRF)들을
-        클라이언트가 직접 꺼내갈 수 있도록 리스트로 돌려줌.
+        Returns the list of PRF (Pseudorandom Function) bytes derived from the client's query items.
+
+        This function should be called only after `build_query()` has been executed, since it relies on
+        the internal list of hashed query items (`HashedItem`), which are computed during that step.
+
+        Each returned byte string corresponds to the PRF output of a single query item, and is later used
+        for decrypting masked labels (e.g., UID XOR labels) received from the server.
+
+        Returns:
+            list[bytes]: A list of PRF-derived byte sequences, one for each query item.
         """
-        # 이 이름은 C++ 바인딩에서 .def("get_prf_bytes_all", ...) 으로 등록해 주신 메소드
         return self._get_prf_bytes_all()
 
 
