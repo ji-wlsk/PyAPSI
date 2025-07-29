@@ -25,7 +25,6 @@ RUN /tmp/vcpkg/vcpkg install \
       flatbuffers \
       jsoncpp
 
-# RUN git clone https://github.com/microsoft/apsi /tmp/apsi
 COPY /APSI /tmp/apsi
 RUN sed -i "s/-D_AVX2_/-D_AVX_/g" /tmp/apsi/CMakeLists.txt
 RUN sed -i "s/_AVX2.S/.S/g" /tmp/apsi/common/apsi/fourq/amd64/CMakeLists.txt
