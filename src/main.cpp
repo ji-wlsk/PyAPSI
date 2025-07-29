@@ -310,6 +310,7 @@ public:
             if (!_db) {
                 throw std::runtime_error("try_load_csv_uid_db returned nullptr");
             }
+            db_label_byte_count = _db->get_label_byte_count();
         }
         catch (const std::exception &e) {
             APSI_LOG_ERROR("load_csv_uid_db failed: " << e.what());
